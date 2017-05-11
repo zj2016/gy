@@ -1,0 +1,12 @@
+mysql:
+	账号：admin
+	密码：123456
+	
+服务器登录：
+	账号:root
+	密码：Renquan123
+	
+tomcat项目根目录地址：/var/lib/tomcat7/webapps/ROOT
+
+公网ip:120.77.33.154
+tomcat端口：80
