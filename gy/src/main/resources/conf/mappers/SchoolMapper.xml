@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.gy.dao.SchoolMapper">
+  <resultMap id="BaseResultMap" type="com.bs.gy.bean.School">
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="code" jdbcType="CHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="proviceid" jdbcType="INTEGER" property="proviceid" />
+    <result column="cityid" jdbcType="INTEGER" property="cityid" />
+    <result column="academician" jdbcType="INTEGER" property="academician" />
+    <result column="doctor" jdbcType="INTEGER" property="doctor" />
+    <result column="master" jdbcType="INTEGER" property="master" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="logoimg" jdbcType="VARCHAR" property="logoimg" />
+    <result column="rangeid" jdbcType="INTEGER" property="rangeid" />
+    <result column="natureid" jdbcType="INTEGER" property="natureid" />
+    <result column="levelid" jdbcType="INTEGER" property="levelid" />
+    <result column="batchid" jdbcType="INTEGER" property="batchid" />
+    <result column="extra1" jdbcType="VARCHAR" property="extra1" />
+    <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ids, code, name, proviceid, cityid, academician, doctor, master, createtime, address, 
+    description, logoimg, rangeid, natureid, levelid, batchid, extra1, extra2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wh_school
+    where ids = #{ids,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wh_school
+    where ids = #{ids,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bs.gy.bean.School">
+    insert into wh_school (ids, code, name, 
+      proviceid, cityid, academician, 
+      doctor, master, createtime, 
+      address, description, logoimg, 
+      rangeid, natureid, levelid, 
+      batchid, extra1, extra2
+      )
+    values (#{ids,jdbcType=INTEGER}, #{code,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{proviceid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, #{academician,jdbcType=INTEGER}, 
+      #{doctor,jdbcType=INTEGER}, #{master,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{logoimg,jdbcType=VARCHAR}, 
+      #{rangeid,jdbcType=INTEGER}, #{natureid,jdbcType=INTEGER}, #{levelid,jdbcType=INTEGER}, 
+      #{batchid,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bs.gy.bean.School">
+    insert into wh_school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        ids,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="proviceid != null">
+        proviceid,
+      </if>
+      <if test="cityid != null">
+        cityid,
+      </if>
+      <if test="academician != null">
+        academician,
+      </if>
+      <if test="doctor != null">
+        doctor,
+      </if>
+      <if test="master != null">
+        master,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="logoimg != null">
+        logoimg,
+      </if>
+      <if test="rangeid != null">
+        rangeid,
+      </if>
+      <if test="natureid != null">
+        natureid,
+      </if>
+      <if test="levelid != null">
+        levelid,
+      </if>
+      <if test="batchid != null">
+        batchid,
+      </if>
+      <if test="extra1 != null">
+        extra1,
+      </if>
+      <if test="extra2 != null">
+        extra2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        #{ids,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="proviceid != null">
+        #{proviceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null">
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="academician != null">
+        #{academician,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null">
+        #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="master != null">
+        #{master,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logoimg != null">
+        #{logoimg,jdbcType=VARCHAR},
+      </if>
+      <if test="rangeid != null">
+        #{rangeid,jdbcType=INTEGER},
+      </if>
+      <if test="natureid != null">
+        #{natureid,jdbcType=INTEGER},
+      </if>
+      <if test="levelid != null">
+        #{levelid,jdbcType=INTEGER},
+      </if>
+      <if test="batchid != null">
+        #{batchid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        #{extra2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bs.gy.bean.School">
+    update wh_school
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="proviceid != null">
+        proviceid = #{proviceid,jdbcType=INTEGER},
+      </if>
+      <if test="cityid != null">
+        cityid = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="academician != null">
+        academician = #{academician,jdbcType=INTEGER},
+      </if>
+      <if test="doctor != null">
+        doctor = #{doctor,jdbcType=INTEGER},
+      </if>
+      <if test="master != null">
+        master = #{master,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="logoimg != null">
+        logoimg = #{logoimg,jdbcType=VARCHAR},
+      </if>
+      <if test="rangeid != null">
+        rangeid = #{rangeid,jdbcType=INTEGER},
+      </if>
+      <if test="natureid != null">
+        natureid = #{natureid,jdbcType=INTEGER},
+      </if>
+      <if test="levelid != null">
+        levelid = #{levelid,jdbcType=INTEGER},
+      </if>
+      <if test="batchid != null">
+        batchid = #{batchid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        extra1 = #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        extra2 = #{extra2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bs.gy.bean.School">
+    update wh_school
+    set code = #{code,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      proviceid = #{proviceid,jdbcType=INTEGER},
+      cityid = #{cityid,jdbcType=INTEGER},
+      academician = #{academician,jdbcType=INTEGER},
+      doctor = #{doctor,jdbcType=INTEGER},
+      master = #{master,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      logoimg = #{logoimg,jdbcType=VARCHAR},
+      rangeid = #{rangeid,jdbcType=INTEGER},
+      natureid = #{natureid,jdbcType=INTEGER},
+      levelid = #{levelid,jdbcType=INTEGER},
+      batchid = #{batchid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+</mapper>

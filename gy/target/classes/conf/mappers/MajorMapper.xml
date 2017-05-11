@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.gy.dao.MajorMapper">
+  <resultMap id="BaseResultMap" type="com.bs.gy.bean.Major">
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="years" jdbcType="VARCHAR" property="years" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="twoid" jdbcType="INTEGER" property="twoid" />
+    <result column="extra1" jdbcType="VARCHAR" property="extra1" />
+    <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bs.gy.bean.Major">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ids, name, years, code, twoid, extra1, extra2
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wh_major
+    where ids = #{ids,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wh_major
+    where ids = #{ids,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bs.gy.bean.Major">
+    insert into wh_major (ids, name, years, 
+      code, twoid, extra1, 
+      extra2, description)
+    values (#{ids,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{years,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{twoid,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, 
+      #{extra2,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bs.gy.bean.Major">
+    insert into wh_major
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        ids,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="years != null">
+        years,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="twoid != null">
+        twoid,
+      </if>
+      <if test="extra1 != null">
+        extra1,
+      </if>
+      <if test="extra2 != null">
+        extra2,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        #{ids,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="twoid != null">
+        #{twoid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        #{extra2,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bs.gy.bean.Major">
+    update wh_major
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="years != null">
+        years = #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="twoid != null">
+        twoid = #{twoid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        extra1 = #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        extra2 = #{extra2,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bs.gy.bean.Major">
+    update wh_major
+    set name = #{name,jdbcType=VARCHAR},
+      years = #{years,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      twoid = #{twoid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bs.gy.bean.Major">
+    update wh_major
+    set name = #{name,jdbcType=VARCHAR},
+      years = #{years,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      twoid = #{twoid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+</mapper>

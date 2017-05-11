@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.gy.dao.TwoMapper">
+  <resultMap id="BaseResultMap" type="com.bs.gy.bean.Two">
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="subjectid" jdbcType="INTEGER" property="subjectid" />
+    <result column="extra1" jdbcType="VARCHAR" property="extra1" />
+    <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ids, name, subjectid, extra1, extra2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wh_two
+    where ids = #{ids,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wh_two
+    where ids = #{ids,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bs.gy.bean.Two">
+    insert into wh_two (ids, name, subjectid, 
+      extra1, extra2)
+    values (#{ids,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectid,jdbcType=INTEGER}, 
+      #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bs.gy.bean.Two">
+    insert into wh_two
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        ids,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="subjectid != null">
+        subjectid,
+      </if>
+      <if test="extra1 != null">
+        extra1,
+      </if>
+      <if test="extra2 != null">
+        extra2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        #{ids,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectid != null">
+        #{subjectid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        #{extra2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bs.gy.bean.Two">
+    update wh_two
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectid != null">
+        subjectid = #{subjectid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        extra1 = #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        extra2 = #{extra2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bs.gy.bean.Two">
+    update wh_two
+    set name = #{name,jdbcType=VARCHAR},
+      subjectid = #{subjectid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+</mapper>

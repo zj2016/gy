@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.gy.dao.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.bs.gy.bean.Answer">
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="questionid" jdbcType="INTEGER" property="questionid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="extra1" jdbcType="VARCHAR" property="extra1" />
+    <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.bs.gy.bean.Answer">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ids, questionid, userid, time, pid, extra1, extra2
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wh_answer
+    where ids = #{ids,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wh_answer
+    where ids = #{ids,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bs.gy.bean.Answer">
+    insert into wh_answer (ids, questionid, userid, 
+      time, pid, extra1, 
+      extra2, content)
+    values (#{ids,jdbcType=INTEGER}, #{questionid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{pid,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, 
+      #{extra2,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bs.gy.bean.Answer">
+    insert into wh_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        ids,
+      </if>
+      <if test="questionid != null">
+        questionid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="extra1 != null">
+        extra1,
+      </if>
+      <if test="extra2 != null">
+        extra2,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        #{ids,jdbcType=INTEGER},
+      </if>
+      <if test="questionid != null">
+        #{questionid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        #{extra2,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bs.gy.bean.Answer">
+    update wh_answer
+    <set>
+      <if test="questionid != null">
+        questionid = #{questionid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        extra1 = #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        extra2 = #{extra2,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bs.gy.bean.Answer">
+    update wh_answer
+    set questionid = #{questionid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      pid = #{pid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bs.gy.bean.Answer">
+    update wh_answer
+    set questionid = #{questionid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      time = #{time,jdbcType=TIMESTAMP},
+      pid = #{pid,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+</mapper>
