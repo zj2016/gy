@@ -1,0 +1,40 @@
+﻿访问根路径 ： http://120.77.33.154/gy
+
+模块路径：
+/admin
+/active
+/answer
+/azan
+/batch
+/city
+/course
+/indexschool
+/level
+/major
+/markinfo
+/nature
+/provice
+/qcollection
+/question
+/raceinfo
+/racetype
+/range
+/school
+/schoolimg
+/schoolmajor
+/scoreinfo
+/scoreline
+/subject
+/two
+/user
+
+
+功能路径：
+查询列表  /list  可传递参数  limit 分页每页数据量  page 第几页数据
+添加接口  /add	传递参数，具体添加模块实体类（和数据库中列一一对应）中属性
+删除接口  /remove/{id}  删除id指定的数据库表（表由上面模块路径指定）中的一列
+更新接口  /update 传递参数，具体添加模块实体类（和数据库中列一一对应）中属性，因为根据ids属性更新，所有ids必传
+获取一个  /{id} 获取id指定的数据库表（表由上面模块路径指定）的一行数据
+
+
+访问完全路径： 根路径+模块路径+功能路径+参数（参数选填）
