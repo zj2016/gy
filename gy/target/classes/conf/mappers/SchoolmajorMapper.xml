@@ -17,6 +17,17 @@
     from wh_schoolmajor
     where ids = #{ids,jdbcType=INTEGER}
   </select>
+  <select id="selectList" parameterType="Map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from wh_schoolmajor
+    limit #{offset}, #{limit}
+  </select>
+  <select id="selectCount" parameterType="Map" resultType="int">
+  	select 
+    count(1)
+    from wh_schoolmajor
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wh_schoolmajor
     where ids = #{ids,jdbcType=INTEGER}

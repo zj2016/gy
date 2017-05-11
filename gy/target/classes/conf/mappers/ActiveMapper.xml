@@ -90,4 +90,15 @@
       extra2 = #{extra2,jdbcType=VARCHAR}
     where ids = #{ids,jdbcType=INTEGER}
   </update>
+  <select id="selectList" parameterType="Map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from wh_active
+    limit #{offset}, #{limit}
+  </select>
+  <select id="selectCount" parameterType="Map" resultType="int">
+  	select 
+    count(1)
+    from wh_active
+  </select>
 </mapper>

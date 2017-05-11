@@ -19,6 +19,17 @@
     from wh_markinfo
     where ids = #{ids,jdbcType=INTEGER}
   </select>
+  <select id="selectList" parameterType="Map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from wh_markinfo
+    limit #{offset}, #{limit}
+  </select>
+  <select id="selectCount" parameterType="Map" resultType="int">
+  	select 
+    count(1)
+    from wh_markinfo
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wh_markinfo
     where ids = #{ids,jdbcType=INTEGER}
