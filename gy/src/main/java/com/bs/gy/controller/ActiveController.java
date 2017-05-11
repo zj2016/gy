@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bs.gy.bean.Active;
+import com.bs.gy.bean.Admin;
 import com.bs.gy.query.Query;
 import com.bs.gy.rest.RestResult;
 import com.bs.gy.service.ActiveService;
 
 @RestController
 @RequestMapping("/active")
-public class ActiveController {
+public class ActiveController extends BaseController<Active> {
 
 	@Autowired
 	private ActiveService service;
