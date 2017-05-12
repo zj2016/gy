@@ -54,6 +54,7 @@ H:\GIT\gy\gy\src\main\java\com\bs\gy\dao\BatchMapper.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\controller\CourseController.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\dao\QcollectionMapper.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\service\LevelService.java
+H:\GIT\gy\gy\src\main\java\com\bs\gy\rest\RestO.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\service\BaseService.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\bean\Schoolimg.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\bean\Azan.java
@@ -132,6 +133,7 @@ H:\GIT\gy\gy\src\main\java\com\bs\gy\service\SchoolimgService.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\service\impl\ScorelineServiceImpl.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\dao\SchoolMapper.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\controller\LevelController.java
+H:\GIT\gy\gy\src\main\java\com\bs\gy\rest\Rest.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\service\SchoolService.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\bean\Racetype.java
 H:\GIT\gy\gy\src\main\java\com\bs\gy\dao\ActiveMapper.java
