@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bs.gy.dao.SchoolMapper">
-  <resultMap id="BaseResultMap" type="com.bs.gy.bean.School">
+<mapper namespace="com.bs.gy.dao.SchoolAllMapper">
+  
+  <resultMap id="BaseResultAllMap" type="com.bs.gy.vo.SchoolAll">
     <id column="ids" jdbcType="INTEGER" property="ids" />
     <result column="code" jdbcType="CHAR" property="code" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="proviceid" jdbcType="INTEGER" property="proviceid" />
-    <result column="cityid" jdbcType="INTEGER" property="cityid" />
+    <result column="provicename" jdbcType="String" property="provicename" />
+    <result column="cityname" jdbcType="String" property="cityname" />
     <result column="academician" jdbcType="INTEGER" property="academician" />
     <result column="doctor" jdbcType="INTEGER" property="doctor" />
     <result column="master" jdbcType="INTEGER" property="master" />
@@ -14,19 +15,35 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="logoimg" jdbcType="VARCHAR" property="logoimg" />
-    <result column="rangeid" jdbcType="INTEGER" property="rangeid" />
-    <result column="natureid" jdbcType="INTEGER" property="natureid" />
-    <result column="levelid" jdbcType="INTEGER" property="levelid" />
-    <result column="batchid" jdbcType="INTEGER" property="batchid" />
+    <result column="rangename" jdbcType="String" property="rangename" />
+    <result column="naturename" jdbcType="String" property="naturename" />
+    <result column="levelname" jdbcType="String" property="levelname" />
+    <result column="batchname" jdbcType="String" property="batchname" />
     <result column="extra1" jdbcType="VARCHAR" property="extra1" />
     <result column="extra2" jdbcType="VARCHAR" property="extra2" />
   </resultMap>
-
+  
   <sql id="Base_Column_List">
-    ids, code, name, proviceid, cityid, academician, doctor, master, createtime, address, 
-    description, logoimg, rangeid, natureid, levelid, batchid, extra1, extra2
+    ids, code, name, provicename, cityname, academician, doctor, master, createtime, address, 
+    description, logoimg, rangename, naturename, levelname, batchname, extra1, extra2
   </sql>
-
+  
+  <sql id="base_join">
+  	from 
+  	wh_school left s join wh_provice p
+  	on s.proviceid = p.ids
+  	left join wh_city c
+  	on s.cityid = c.ids
+  	left join wh_range r
+  	on s.rangeid = r.ids
+  	left join wh_nature n
+  	on s.natureid = n.ids
+  	left join wh_levle l
+  	on s.levelid = l.ids
+  	left join wh_batch b
+  	on s.batchid = b.ids
+  </sql>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

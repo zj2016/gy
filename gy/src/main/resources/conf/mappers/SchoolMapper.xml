@@ -21,10 +21,12 @@
     <result column="extra1" jdbcType="VARCHAR" property="extra1" />
     <result column="extra2" jdbcType="VARCHAR" property="extra2" />
   </resultMap>
+
   <sql id="Base_Column_List">
     ids, code, name, proviceid, cityid, academician, doctor, master, createtime, address, 
     description, logoimg, rangeid, natureid, levelid, batchid, extra1, extra2
   </sql>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
