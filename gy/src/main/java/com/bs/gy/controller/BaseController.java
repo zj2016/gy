@@ -1,13 +1,18 @@
 package com.bs.gy.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bs.gy.query.Query;
+import com.bs.gy.rest.Rest;
 import com.bs.gy.rest.RestResult;
 import com.bs.gy.service.BaseService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class BaseController<T> {
 
@@ -15,8 +20,13 @@ public class BaseController<T> {
 	private BaseService<T> service;
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public RestResult list(Query query){
-		return RestResult.success().setResponse(service.getList(query.toMap()));
+	public String list(Query query) throws JsonProcessingException{
+		Map<String,Object> params = query.toMap();
+		List<T> list = service.getList(params);
+		int count = service.getCount(params);
+		Rest<T> rest = new Rest<T>(count, list);
+		System.out.println(rest.toJson());
+		return rest.toJson();
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -25,7 +35,7 @@ public class BaseController<T> {
 		if(result > 0){
 			return RestResult.success();
 		}
-		return RestResult.error("Ìí¼ÓÊ§°Ü");
+		return RestResult.error("æ·»åŠ æˆåŠŸ");
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -34,7 +44,7 @@ public class BaseController<T> {
 		if(result > 0){
 			return RestResult.success();
 		}
-		return RestResult.error("¸üĞÂÊ§°Ü");
+		return RestResult.error("æ›´æ–°æˆåŠŸ");
 	}
 	
 	@RequestMapping(value = "/remove/{id}")
@@ -43,7 +53,7 @@ public class BaseController<T> {
 		if(result > 0){
 			return RestResult.success();
 		}
-		return RestResult.error("É¾³ıÊ§°Ü");
+		return RestResult.error("åˆ é™¤æˆåŠŸ");
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

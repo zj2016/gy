@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.gy.dao.MarkinfoMapper">
+  <resultMap id="BaseResultMap" type="com.bs.gy.bean.Markinfo">
+    <id column="ids" jdbcType="INTEGER" property="ids" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="years" jdbcType="VARCHAR" property="years" />
+    <result column="month" jdbcType="VARCHAR" property="month" />
+    <result column="mark" jdbcType="INTEGER" property="mark" />
+    <result column="extra1" jdbcType="VARCHAR" property="extra1" />
+    <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ids, userid, years, month, mark, extra1, extra2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wh_markinfo
+    where ids = #{ids,jdbcType=INTEGER}
+  </select>
+  <select id="selectList" parameterType="Map" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from wh_markinfo
+    limit #{offset}, #{limit}
+  </select>
+  <select id="selectCount" parameterType="Map" resultType="int">
+  	select 
+    count(1)
+    from wh_markinfo
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wh_markinfo
+    where ids = #{ids,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bs.gy.bean.Markinfo">
+    insert into wh_markinfo (ids, userid, years, 
+      month, mark, extra1, 
+      extra2)
+    values (#{ids,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{years,jdbcType=VARCHAR}, 
+      #{month,jdbcType=VARCHAR}, #{mark,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, 
+      #{extra2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bs.gy.bean.Markinfo">
+    insert into wh_markinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        ids,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="years != null">
+        years,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="extra1 != null">
+        extra1,
+      </if>
+      <if test="extra2 != null">
+        extra2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ids != null">
+        #{ids,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="years != null">
+        #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        #{extra2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bs.gy.bean.Markinfo">
+    update wh_markinfo
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="years != null">
+        years = #{years,jdbcType=VARCHAR},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=INTEGER},
+      </if>
+      <if test="extra1 != null">
+        extra1 = #{extra1,jdbcType=VARCHAR},
+      </if>
+      <if test="extra2 != null">
+        extra2 = #{extra2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bs.gy.bean.Markinfo">
+    update wh_markinfo
+    set userid = #{userid,jdbcType=INTEGER},
+      years = #{years,jdbcType=VARCHAR},
+      month = #{month,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=INTEGER},
+      extra1 = #{extra1,jdbcType=VARCHAR},
+      extra2 = #{extra2,jdbcType=VARCHAR}
+    where ids = #{ids,jdbcType=INTEGER}
+  </update>
+</mapper>
