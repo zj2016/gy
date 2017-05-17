@@ -50,6 +50,8 @@ public class RestO<T> {
 		super();
 		this.total = total;
 		this.data = data;
+		this.code = SUCCESS;
+		this.message = "success";
 	}
 	public String toJson(){
 		ObjectMapper om = new ObjectMapper();

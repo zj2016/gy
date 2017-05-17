@@ -24,12 +24,40 @@
   	select 
     <include refid="Base_Column_List" />
     from wh_major
+    <where>
+    <if test="name != null">
+        name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="years != null">
+        and years = #{years,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+      and  code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="twoid != null">
+        and twoid = #{twoid,jdbcType=INTEGER}
+      </if>
+    </where>
     limit #{offset}, #{limit}
   </select>
   <select id="selectCount" parameterType="Map" resultType="int">
   	select 
     count(1)
     from wh_major
+    <where>
+    <if test="name != null">
+        name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="years != null">
+        and years = #{years,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+      and  code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="twoid != null">
+        and twoid = #{twoid,jdbcType=INTEGER}
+      </if>
+    </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wh_major

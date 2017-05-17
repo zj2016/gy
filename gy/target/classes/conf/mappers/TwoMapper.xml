@@ -21,12 +21,28 @@
   	select 
     <include refid="Base_Column_List" />
     from wh_two
+    <where>
+    <if test="name != null">
+        name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="subjectid != null">
+       and subjectid = #{subjectid,jdbcType=INTEGER}
+      </if>
+    </where>
     limit #{offset}, #{limit}
   </select>
   <select id="selectCount" parameterType="Map" resultType="int">
   	select 
     count(1)
     from wh_two
+    <where>
+    <if test="name != null">
+        name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="subjectid != null">
+       and subjectid = #{subjectid,jdbcType=INTEGER}
+      </if>
+    </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wh_two

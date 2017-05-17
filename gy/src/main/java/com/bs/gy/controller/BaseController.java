@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bs.gy.query.Query;
+import com.bs.gy.query.TwoQuery;
 import com.bs.gy.rest.Rest;
 import com.bs.gy.rest.RestO;
 import com.bs.gy.service.BaseService;

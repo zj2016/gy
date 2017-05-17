@@ -21,6 +21,14 @@
   	select 
     <include refid="Base_Column_List" />
     from wh_admin
+    <where>
+    <if test="username != null">
+        username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+        and password = #{password,jdbcType=VARCHAR}
+      </if>
+    </where>
     limit #{offset}, #{limit}
   </select>
   <select id="selectCount" parameterType="Map" resultType="int">
