@@ -1,40 +1,46 @@
 ﻿访问根路径 ： http://120.77.33.154/gy
 
 模块路径：
-/admin
+管理员     /admin
 /active
-/answer
+问答     /answer
 /azan
 /batch
-/city
+城市     /city
 /course
-/indexschool
+首页轮播图      /indexschool
 /level
-/major
+三级专业     /major
 /markinfo
 /nature
-/provice
+省    /provice
 /qcollection
-/question
+问题    /question
 /raceinfo
 /racetype
 /range
-/school
+学校   /school
 /schoolimg
 /schoolmajor
 /scoreinfo
 /scoreline
-/subject
-/two
-/user
+一级专业  /subject
+二级专业  /two
+用户  /user
 
 
 功能路径：
-查询列表  /list  可传递参数  limit 分页每页数据量  page 第几页数据
-添加接口  /add	传递参数，具体添加模块实体类（和数据库中列一一对应）中属性
-删除接口  /remove/{id}  删除id指定的数据库表（表由上面模块路径指定）中的一列
-更新接口  /update 传递参数，具体添加模块实体类（和数据库中列一一对应）中属性，因为根据ids属性更新，所有ids必传
-获取一个  /{id} 获取id指定的数据库表（表由上面模块路径指定）的一行数据
+查询列表  /list get  可传递参数  limit 分页每页数据量  page 第几页数据
+添加接口  /add post	传递参数，具体添加模块实体类（和数据库中列一一对应）中属性
+删除接口  /remove/{id} get  删除id指定的数据库表（表由上面模块路径指定）中的一列
+更新接口  /update post 传递参数，具体添加模块实体类（和数据库中列一一对应）中属性，因为根据ids属性更新，所有ids必传
+获取一个  /{id} get 获取id指定的数据库表（表由上面模块路径指定）的一行数据
 
+有检索条件的接口列表接口  /listN get 可传递参数  limit 分页每页数据量  page 第几页数据,检索条件参数
+
+额外接口：
+登录接口 ： http://120.77.33.154/gy/admin/login post username,password 参数
+注册接口:  http://120.77.33.154/gy/admin/register post username,password 参数
+退出接口： http://120.77.33.154/gy/admin/logout get
 
 访问完全路径： 根路径+模块路径+功能路径+参数（参数选填）

@@ -94,11 +94,21 @@
   	select 
     <include refid="Base_Column_List" />
     from wh_active
+    <where>
+      <if test="time != null">
+        and DATE_FORMAT(time,"%Y-%m-%d") = time
+      </if>
+    </where>
     limit #{offset}, #{limit}
   </select>
   <select id="selectCount" parameterType="Map" resultType="int">
   	select 
     count(1)
     from wh_active
+     <where>
+      <if test="time != null">
+        and DATE_FORMAT(time,"%Y-%m-%d") = time
+      </if>
+    </where>
   </select>
 </mapper>
