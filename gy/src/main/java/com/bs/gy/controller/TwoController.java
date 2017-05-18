@@ -13,6 +13,8 @@ import com.bs.gy.bean.Two;
 import com.bs.gy.query.Query;
 import com.bs.gy.query.TwoQuery;
 import com.bs.gy.rest.Rest;
+import com.bs.gy.rest.RestO;
+import com.bs.gy.service.MajorService;
 import com.bs.gy.service.TwoService;
 
 @RestController
@@ -22,6 +24,9 @@ public class TwoController extends BaseController<Two> {
 	@Autowired
 	private TwoService service;
 	
+	@Autowired
+	private MajorService majorService;
+	
 	@RequestMapping(value = "/listN", method = RequestMethod.GET, produces = "text/json;charset=UTF-8")
 	public String list(TwoQuery query) {
 		Map<String,Object> params = query.toMap();
@@ -29,6 +34,20 @@ public class TwoController extends BaseController<Two> {
 		int count = service.getCount(params);
 		Rest<Two> rest = new Rest<Two>(count, list);
 		return rest.toJson();
+	}
+	
+	@Override
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "text/json;charset=UTF-8")
+	public String one(Integer id) {
+
+		Two two = service.get(id);
+		Query query = new Query();
+		query.setLimit(1000);
+		Map<String, Object> params = query.toMap();
+		params.put("twoid", id);
+		two.setMajorList(majorService.getList(params));
+		
+		return RestO.success().setData(two).toJson();
 	}
 	
 }
