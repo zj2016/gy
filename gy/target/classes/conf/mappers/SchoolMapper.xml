@@ -20,11 +20,14 @@
     <result column="batchid" jdbcType="INTEGER" property="batchid" />
     <result column="extra1" jdbcType="VARCHAR" property="extra1" />
     <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+    <result column="onescoreline" jdbcType="INTEGER" property="onescoreline" />
+    <result column="twoscoreline" jdbcType="INTEGER" property="twoscoreline" />
+    <result column="threescoreline" jdbcType="INTEGER" property="threescoreline" />
   </resultMap>
 
   <sql id="Base_Column_List">
     ids, code, name, proviceid, cityid, academician, doctor, master, createtime, address, 
-    description, logoimg, rangeid, natureid, levelid, batchid, extra1, extra2
+    description, logoimg, rangeid, natureid, levelid, batchid, extra1, extra2, onescoreline, twoscoreline, threescoreline
   </sql>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -54,15 +57,15 @@
       doctor, master, createtime, 
       address, description, logoimg, 
       rangeid, natureid, levelid, 
-      batchid, extra1, extra2
+      batchid, extra1, extra2, onescoreline, twoscoreline, threescoreline
       )
     values (#{ids,jdbcType=INTEGER}, #{code,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
       #{proviceid,jdbcType=INTEGER}, #{cityid,jdbcType=INTEGER}, #{academician,jdbcType=INTEGER}, 
       #{doctor,jdbcType=INTEGER}, #{master,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
       #{address,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{logoimg,jdbcType=VARCHAR}, 
       #{rangeid,jdbcType=INTEGER}, #{natureid,jdbcType=INTEGER}, #{levelid,jdbcType=INTEGER}, 
-      #{batchid,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR}
-      )
+      #{batchid,jdbcType=INTEGER}, #{extra1,jdbcType=VARCHAR}, #{extra2,jdbcType=VARCHAR},
+      #{onescoreline,jdbcType=INTEGER},#{twoscoreline,jdbcType=INTEGER},#{threescoreline,jdbcType=INTEGER} )
   </insert>
   <insert id="insertSelective" parameterType="com.bs.gy.bean.School">
     insert into wh_school
@@ -233,6 +236,15 @@
       <if test="extra2 != null">
         extra2 = #{extra2,jdbcType=VARCHAR},
       </if>
+      <if test="onescoreline != null">
+        onescoreline = #{onescoreline,jdbcType=INTEGER},
+      </if>
+      <if test="twoscoreline != null">
+        twoscoreline = #{twoscoreline,jdbcType=INTEGER},
+      </if>
+      <if test="threescoreline != null">
+        threescoreline = #{threescoreline,jdbcType=INTEGER},
+      </if>
     </set>
     where ids = #{ids,jdbcType=INTEGER}
   </update>
@@ -254,7 +266,10 @@
       levelid = #{levelid,jdbcType=INTEGER},
       batchid = #{batchid,jdbcType=INTEGER},
       extra1 = #{extra1,jdbcType=VARCHAR},
-      extra2 = #{extra2,jdbcType=VARCHAR}
+      extra2 = #{extra2,jdbcType=VARCHAR},
+      onescoreline = #{onescoreline,jdbcType=INTEGER},
+      twoscoreline = #{twoscoreline,jdbcType=INTEGER},
+      threescoreline = #{threescoreline,jdbcType=INTEGER}
     where ids = #{ids,jdbcType=INTEGER}
   </update>
 </mapper>

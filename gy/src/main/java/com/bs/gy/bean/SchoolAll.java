@@ -50,6 +50,12 @@ public class SchoolAll {
     private String extra1;
 
     private String extra2;
+    
+    private Integer onescoreline;
+    
+    private Integer twoscoreline;
+    
+    private Integer threescoreline;
 
     public Integer getIds() {
         return ids;
@@ -241,6 +247,30 @@ public class SchoolAll {
 
 	public void setBatchname(String batchname) {
 		this.batchname = batchname;
+	}
+
+	public Integer getOnescoreline() {
+		return onescoreline;
+	}
+
+	public void setOnescoreline(Integer onescoreline) {
+		this.onescoreline = onescoreline;
+	}
+
+	public Integer getTwoscoreline() {
+		return twoscoreline;
+	}
+
+	public void setTwoscoreline(Integer twoscoreline) {
+		this.twoscoreline = twoscoreline;
+	}
+
+	public Integer getThreescoreline() {
+		return threescoreline;
+	}
+
+	public void setThreescoreline(Integer threescoreline) {
+		this.threescoreline = threescoreline;
 	}
     
     

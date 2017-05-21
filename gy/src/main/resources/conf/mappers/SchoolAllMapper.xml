@@ -27,11 +27,14 @@
     <result column="batchname" jdbcType="VARCHAR" property="batchname" />
     <result column="extra1" jdbcType="VARCHAR" property="extra1" />
     <result column="extra2" jdbcType="VARCHAR" property="extra2" />
+    <result column="onescoreline" jdbcType="INTEGER" property="onescoreline" />
+    <result column="twoscoreline" jdbcType="INTEGER" property="twoscoreline" />
+    <result column="threescoreline" jdbcType="INTEGER" property="threescoreline" />
   </resultMap>
   
   <sql id="Base_Column_List">
     s.ids, code, s.name,s.proviceid, p.provice as provicename,s.cityid, c.name as cityname, academician, doctor, master, createtime, address, 
-    description, logoimg, s.rangeid,r.name as rangename, s.natureid,n.name as naturename,s.levelid, l.name as levelname,s.batchid, b.name as batchname, s.extra1, s.extra2
+    description, logoimg, s.rangeid,r.name as rangename, s.natureid,n.name as naturename,s.levelid, l.name as levelname,s.batchid, b.name as batchname, s.extra1, s.extra2, s.onescoreline, s.twoscoreline, s.threescoreline
   </sql>
   
   <sql id="base_join">

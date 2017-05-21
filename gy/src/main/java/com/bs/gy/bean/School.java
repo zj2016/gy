@@ -38,6 +38,12 @@ public class School {
     private String extra1;
 
     private String extra2;
+    
+    private Integer onescoreline;
+    
+    private Integer twoscoreline;
+    
+    private Integer threescoreline;
 
     public Integer getIds() {
         return ids;
@@ -182,4 +188,30 @@ public class School {
     public void setExtra2(String extra2) {
         this.extra2 = extra2 == null ? null : extra2.trim();
     }
+
+	public Integer getOnescoreline() {
+		return onescoreline;
+	}
+
+	public void setOnescoreline(Integer onescoreline) {
+		this.onescoreline = onescoreline;
+	}
+
+	public Integer getTwoscoreline() {
+		return twoscoreline;
+	}
+
+	public void setTwoscoreline(Integer twoscoreline) {
+		this.twoscoreline = twoscoreline;
+	}
+
+	public Integer getThreescoreline() {
+		return threescoreline;
+	}
+
+	public void setThreescoreline(Integer threescoreline) {
+		this.threescoreline = threescoreline;
+	}
+    
+    
 }

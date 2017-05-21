@@ -31,11 +31,12 @@ public class HomeController {
 	@RequestMapping(value = "/home", method = RequestMethod.GET, produces = "text/json;charset=UTF-8")
 	public String home() {
 		
-		Map<String, Object> params = new Query().toMap();
+		Query query = new Query();
+		Map<String, Object> params = query.toMap();
 		int total = userService.getCount(params);
 		params.put("registertime", DateUtils.getNowDateTime(DatePattern.yyyy_MM_dd));
 		int now = userService.getCount(params);
-		params.clear();
+		params = query.toMap();
 		params.put("time", DateUtils.getNowDateTime(DatePattern.yyyy_MM_dd));
 		List<Active> list = activeService.getList(params);
 		int hot = 0;

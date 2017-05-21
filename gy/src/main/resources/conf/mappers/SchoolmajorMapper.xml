@@ -21,12 +21,22 @@
   	select 
     <include refid="Base_Column_List" />
     from wh_schoolmajor
+    <where>
+    <if test="schoolid != null">
+    schoolid = #{schoolid,jdbcType=INTEGER}
+    </if>
+    </where>
     limit #{offset}, #{limit}
   </select>
   <select id="selectCount" parameterType="Map" resultType="int">
   	select 
     count(1)
     from wh_schoolmajor
+    <where>
+    <if test="schoolid != null">
+    schoolid = #{schoolid,jdbcType=INTEGER}
+    </if>
+    </where>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wh_schoolmajor
